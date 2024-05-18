@@ -4,7 +4,7 @@ import time
 SECONDS_IN_DAY = 86400
 
 
-def delete_old_files_in_folder(folder_path, days):
+def delete_old_files_in_folder(folder_path, days) -> None:
     cutoff_time = time.time() - days * SECONDS_IN_DAY
 
     for filename in os.listdir(folder_path):
@@ -17,7 +17,7 @@ def delete_old_files_in_folder(folder_path, days):
                 os.remove(file_path)
 
 
-def delete_old_files_in_folder_and_inner_folders(folder_path, days):
+def delete_old_files_in_folder_and_inner_folders(folder_path, days) -> None:
     cutoff_time = time.time() - days * SECONDS_IN_DAY
 
     for root, _, files in os.walk(folder_path):

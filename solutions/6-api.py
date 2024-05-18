@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Any
 from pydantic import BaseModel
-import pandas
+from pandas import DataFrame
 import httpx
 
 
@@ -16,10 +16,10 @@ today = datetime.now()
 url = f"https://api.gazprombank.ru/very/important/docs?documents_date={today.date()}"
 
 
-def json_to_dataframe(data):
+def json_to_dataframe(data) -> DataFrame:
     columns = data["Columns"]
     rows = data["Rows"]
-    df = pandas.DataFrame(rows, columns=columns)
+    df = DataFrame(rows, columns=columns)
 
     column_mapping = {
         "key1": "document_id",

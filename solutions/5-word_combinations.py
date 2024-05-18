@@ -1,10 +1,10 @@
-def read_words_from_file(filename):
+def read_words_from_file(filename) -> list[str]:
     with open(filename, "r", encoding="utf-8") as file:
         words = file.read().split()
     return words
 
 
-def combine_words(word1, word2):
+def combine_words(word1, word2) -> str:
     max_overlap = 0
     for i in range(1, min(len(word1), len(word2)) + 1):
         if word1[-i:] == word2[:i]:
@@ -13,7 +13,7 @@ def combine_words(word1, word2):
     return combined_word
 
 
-def generate_combined_words(base_word, words_list):
+def generate_combined_words(base_word, words_list) -> list[str]:
     combined_words = [
         combine_words(base_word, other_word)
         for other_word in words_list
